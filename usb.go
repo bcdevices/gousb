@@ -176,7 +176,8 @@ func (c *Context) OpenDevices(opener func(desc *DeviceDesc) bool) ([]*Device, er
 		desc, err := c.libusb.getDeviceDesc(dev)
 		if err != nil {
 			c.libusb.dereference(dev)
-			reterr = err
+			debug.Printf("Skipping Error: %v", err)
+			//reterr = err
 			continue
 		}
 
